@@ -11,7 +11,7 @@ import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 
 const getDateString = (dateObj) => {
   const month = dateObj.getUTCMonth() + 1; //months from 1-12
-  const day = dateObj.getUTCDate();
+  const day = dateObj.getUTCDate() + 1;
   const year = dateObj.getUTCFullYear();
   return year + "-" + month + "-" + day;
 };
