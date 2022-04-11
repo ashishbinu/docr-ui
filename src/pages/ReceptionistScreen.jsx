@@ -4,13 +4,13 @@ import { useState } from "react";
 import TextField from "@mui/material/TextField";
 import { Box } from "@mui/material";
 import { Button, ButtonGroup } from "@mui/material";
-import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
+// import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
+// import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+// import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 
 import Stack from "@mui/material/Stack";
 
-function ReceptionistSceen() {
+function ReceptionistScreen() {
   const [nameValue, setNameValue] = useState("");
   const [dobValue, setDobValue] = useState("");
 
@@ -45,7 +45,7 @@ function ReceptionistSceen() {
         />
       </div>
       <div>
-        <LocalizationProvider dateAdapter={AdapterDateFns}>
+        {/*<LocalizationProvider dateAdapter={AdapterDateFns}>
           <Stack spacing={3}>
             <DesktopDatePicker
               label="For desktop"
@@ -56,7 +56,7 @@ function ReceptionistSceen() {
               renderInput={(params) => <TextField {...params} />}
             />
           </Stack>
-        </LocalizationProvider>
+        </LocalizationProvider>*/}
       </div>
       <div>
         <ButtonGroup
@@ -71,4 +71,4 @@ function ReceptionistSceen() {
   );
 }
 
-export default ReceptionistSceen;
+export default ReceptionistScreen;
