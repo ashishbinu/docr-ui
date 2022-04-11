@@ -1,0 +1,45 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.Doctor {
+  display: flex;
+  flex-direction: column;
+  padding: 3rem;
+  min-height: 100vh;
+}
+
+h1 {
+  padding: 1rem 0;
+}
+h2 {
+  padding: 1rem 0;
+}
+
+.hist-container {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+.hist-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.hist-header h3,
+h5 {
+  margin: 0%;
+}
+
+.hist-header h5 {
+  font-weight: normal;
+}
+
+.med-card {
+  margin: 1rem 0;
+}
