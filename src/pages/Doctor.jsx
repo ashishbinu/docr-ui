@@ -16,7 +16,7 @@ function Doctor() {
   const secolor = "#dddddd";
 
   useEffect(async () => {
-    const response = await fetch("https://docr-sih.herokuapp.com/doctor/");
+    const response = await fetch("https://docr-sih.herokuapp.com/");
     const details = await response.json();
     console.log(details);
     setPatientDetails(details);
