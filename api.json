@@ -1,0 +1,32 @@
+{
+  "id": "2",
+  "full_name": "Sudev Suresh Sreedevi",
+  "age": "30",
+  "blood_type": "AB+ve",
+  "history": [
+    {
+      "date": "23 January 2022",
+      "diagnosis": "Diabetes",
+      "prescription": [
+        {
+          "name": "Metformin HydroChloride",
+          "dosage": "100mg",
+          "routine": "1-0-1",
+          "duration": "2 weeks"
+        },
+        {
+          "name": "Atorvastatin",
+          "dosage": "100mg",
+          "routine": "1-1-1",
+          "duration": "2 weeks"
+        },
+        {
+          "name": "Paracetamol",
+          "dosage": "100mg",
+          "routine": "1-1-1",
+          "duration": "2 weeks"
+        }
+      ]
+    }
+  ]
+}
