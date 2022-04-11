@@ -8,6 +8,7 @@ specifiers:
   '@mui/styles': ^5.6.1
   '@mui/x-date-pickers': ^5.0.0-alpha.0
   '@vitejs/plugin-react': ^1.0.7
+  date-fns: 2.28.0
   react: ^17.0.2
   react-dom: ^17.0.2
   react-html5-camera-photo: ^1.5.5
@@ -20,7 +21,8 @@ dependencies:
   '@emotion/styled': 11.8.1_3ce471551e6e06bcaecec3488aa5ccb5
   '@mui/material': 5.6.0_8a1592cdd44bb6265a8be2c927d84cf2
   '@mui/styles': 5.6.1_react@17.0.2
-  '@mui/x-date-pickers': 5.0.0-alpha.0_e8d2c8d67810fade37f3acd3b0002542
+  '@mui/x-date-pickers': 5.0.0-alpha.0_efb21f1811a220c72fe57f3ff0a619f7
+  date-fns: 2.28.0
   react: 17.0.2
   react-dom: 17.0.2_react@17.0.2
   react-html5-camera-photo: 1.5.5_react-dom@17.0.2+react@17.0.2
@@ -280,7 +282,7 @@ packages:
     resolution: {integrity: sha512-pVI9nfkf2qClb2Cxdq0Q4zJhdawMG4ybWZUVGifT78FDwzRMX2SwXBb55s5NRJk0HcIicDuxktmCtemZqMH1Zg==}
     dev: false
 
-  /@date-io/date-fns/2.13.1:
+  /@date-io/date-fns/2.13.1_date-fns@2.28.0:
     resolution: {integrity: sha512-8fmfwjiLMpFLD+t4NBwDx0eblWnNcgt4NgfT/uiiQTGI81fnPu9tpBMYdAcuWxaV7LLpXgzLBx1SYWAMDVUDQQ==}
     peerDependencies:
       date-fns: ^2.0.0
@@ -289,6 +291,7 @@ packages:
         optional: true
     dependencies:
       '@date-io/core': 2.13.1
+      date-fns: 2.28.0
     dev: false
 
   /@date-io/dayjs/2.13.1:
@@ -660,7 +663,7 @@ packages:
       react-is: 17.0.2
     dev: false
 
-  /@mui/x-date-pickers/5.0.0-alpha.0_e8d2c8d67810fade37f3acd3b0002542:
+  /@mui/x-date-pickers/5.0.0-alpha.0_efb21f1811a220c72fe57f3ff0a619f7:
     resolution: {integrity: sha512-JTzTaNSWbxNi8KDUJjHCH6im0YlIEv88gPoKhGm7s6xCGT1q6FtMp/oQ40nhfwrJ73nkM5G1JXRIzI/yfsHXQQ==}
     engines: {node: '>=12.0.0'}
     peerDependencies:
@@ -681,13 +684,14 @@ packages:
       moment:
         optional: true
     dependencies:
-      '@date-io/date-fns': 2.13.1
+      '@date-io/date-fns': 2.13.1_date-fns@2.28.0
       '@date-io/dayjs': 2.13.1
       '@date-io/luxon': 2.13.1
       '@date-io/moment': 2.13.1
       '@mui/material': 5.6.0_8a1592cdd44bb6265a8be2c927d84cf2
       '@mui/utils': 5.6.0_react@17.0.2
       clsx: 1.1.1
+      date-fns: 2.28.0
       prop-types: 15.8.1
       react: 17.0.2
       react-transition-group: 4.4.2_react-dom@17.0.2+react@17.0.2
@@ -835,6 +839,11 @@ packages:
 
   /csstype/3.0.11:
     resolution: {integrity: sha512-sa6P2wJ+CAbgyy4KFssIb/JNMLxFvKF1pCYCSXS8ZMuqZnMsrxqI2E5sPyoTpxoPU/gVZMzr2zjOfg8GIZOMsw==}
+    dev: false
+
+  /date-fns/2.28.0:
+    resolution: {integrity: sha512-8d35hViGYx/QH0icHYCeLmsLmMUheMmTyV9Fcm6gvNwdw31yXXH+O85sOBJ+OLnLQMKZowvpKb6FgMIQjcpvQw==}
+    engines: {node: '>=0.11'}
     dev: false
 
   /debug/4.3.4:

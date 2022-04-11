@@ -1,31 +1,26 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 
-import TextField from "@mui/material/TextField";
-import { Box } from "@mui/material";
-import { Button, ButtonGroup } from "@mui/material";
-// import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
-// import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-// import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
+import { Box, Button, ButtonGroup, Snackbar, TextField } from "@mui/material";
+
+import { useNavigate } from "react-router-dom";
 
 import Stack from "@mui/material/Stack";
+import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 
+const getDateString = (dateObj) => {
+  const month = dateObj.getUTCMonth() + 1; //months from 1-12
+  const day = dateObj.getUTCDate();
+  const year = dateObj.getUTCFullYear();
+  return year + "-" + month + "-" + day;
+};
 function ReceptionistScreen() {
   const [nameValue, setNameValue] = useState("");
-  const [dobValue, setDobValue] = useState("");
+  const [dobValue, setDobValue] = useState(null);
+  const [isSearchSuccess, setIsSearchSuccess] = useState(false);
 
-  const buttons = [
-    <Button
-      key="Search"
-      onClick={() => {
-        console.log(nameValue, dobValue);
-      }}
-    >
-      Search
-    </Button>,
-    <Button key="p_form">Print Enrollment Form</Button>,
-    <Button key="u_form">Upload Enrollment Form</Button>,
-  ];
+  let navigate = useNavigate();
 
   return (
     <Box
@@ -45,26 +40,63 @@ function ReceptionistScreen() {
         />
       </div>
       <div>
-        {/*<LocalizationProvider dateAdapter={AdapterDateFns}>
-          <Stack spacing={3}>
-            <DesktopDatePicker
-              label="For desktop"
-              minDate={new Date("2017-01-01")}
-              onChange={(newValue) => {
-                setDobValue(newValue);
-              }}
-              renderInput={(params) => <TextField {...params} />}
-            />
-          </Stack>
-        </LocalizationProvider>*/}
+        <LocalizationProvider dateAdapter={AdapterDateFns}>
+          <DatePicker
+            label="Date Of Birth"
+            views={["day", "month", "year"]}
+            value={dobValue}
+            onChange={(newValue) => {
+              setDobValue(newValue);
+            }}
+            renderInput={(params) => <TextField {...params} />}
+          />
+        </LocalizationProvider>
       </div>
       <div>
         <ButtonGroup
           orientation="vertical"
           size="large"
-          aria-label="vertical outlined button group large"
+          aria-label="vertical contained button group large"
         >
-          {buttons}
+          <Stack spacing={2}>
+            {isSearchSuccess ? (
+              <Button
+                key="Search"
+                variant="contained"
+                onClick={() => {
+                  // fetch("someurl.com/patientSearch?name=Sudev&dob=2000-12-02").then((response) => response.json()).then((data) => {
+                  //   if ('error' in data) {
+                  //     setIsSearchSuccess(false)
+                  //     console.log(data.error)
+                  // //then show a snackbar that about the error
+                  //   }
+                  // })
+                  console.log(nameValue, getDateString(dobValue));
+                }}
+              >
+                Search
+              </Button>
+            ) : (
+              <>
+                <Button
+                  key="p_form"
+                  onClick={() => {
+                    print("something");
+                  }}
+                >
+                  Print Enrollment Form
+                </Button>
+                <Button
+                  key="u_form"
+                  onClick={() => {
+                    navigate("/receptionist/scanEnrollmentForm");
+                  }}
+                >
+                  Upload Enrollment Form
+                </Button>
+              </>
+            )}
+          </Stack>
         </ButtonGroup>
       </div>
     </Box>
