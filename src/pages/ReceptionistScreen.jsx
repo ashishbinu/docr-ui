@@ -18,7 +18,7 @@ const getDateString = (dateObj) => {
 function ReceptionistScreen() {
   const [nameValue, setNameValue] = useState("");
   const [dobValue, setDobValue] = useState(null);
-  const [isSearchSuccess, setIsSearchSuccess] = useState(false);
+  const [isSearchSuccess, setIsSearchSuccess] = useState(true);
 
   let navigate = useNavigate();
 
