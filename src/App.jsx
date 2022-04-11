@@ -3,7 +3,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import CameraScreen from "./pages/CameraScreen.jsx";
 import ReceptionistScreen from "./pages/ReceptionistScreen.jsx";
 import UserSelectionScreen from "./pages/UserSelectionScreen.jsx";
-import Doctor from "./pages/Doctor";
+import PharmacyViewScreen from "./pages/PharmacyViewScreen.jsx";
+import Doctor from "./pages/Doctor.jsx";
 
 import Grid from "@mui/material/Grid";
 import Card from "@mui/material/Card";
@@ -14,7 +15,6 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<UserSelectionScreen />} />
-          <Route path="/patient" element={<div />} />
           <Route path="/doctor" element={<Doctor />} />
           <Route path="/doctor/uploadPrescription" element={<CameraScreen />} />
           <Route path="/receptionist" element={<ReceptionistScreen />} />
