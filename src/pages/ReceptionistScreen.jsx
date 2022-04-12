@@ -1,6 +1,13 @@
 import React, { useState, useEffect } from "react";
 
-import { Box, Button, ButtonGroup, Snackbar, TextField } from "@mui/material";
+import {
+  Box,
+  Button,
+  ButtonGroup,
+  Snackbar,
+  TextField,
+  Alert,
+} from "@mui/material";
 
 import { useNavigate } from "react-router-dom";
 
@@ -11,7 +18,7 @@ import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 
 const getDateString = (dateObj) => {
   const month = dateObj.getMonth() + 1; //months from 1-12
-  const day = dateObj.getDate().toString().padStart(2,'0');
+  const day = dateObj.getDate().toString().padStart(2, "0");
   const year = dateObj.getFullYear();
   return year + "-" + month + "-" + day;
 };
@@ -19,6 +26,16 @@ function ReceptionistScreen() {
   const [nameValue, setNameValue] = useState("");
   const [dobValue, setDobValue] = useState(null);
   const [isSearchSuccess, setIsSearchSuccess] = useState(true);
+
+  const [open, setOpen] = useState(false);
+  const [severity, setSeverity] = useState("info");
+  const [message, setMessage] = useState("lorem");
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setOpen(false);
+  };
 
   let navigate = useNavigate();
 
@@ -64,13 +81,30 @@ function ReceptionistScreen() {
                 key="Search"
                 variant="contained"
                 onClick={() => {
-                  // fetch("someurl.com/patientSearch?name=Sudev&dob=2000-12-02").then((response) => response.json()).then((data) => {
-                  //   if ('error' in data) {
-                  //     setIsSearchSuccess(false)
-                  //     console.log(data.error)
-                  // //then show a snackbar that about the error
-                  //   }
-                  // })
+                  fetch(
+                    `https://docr-sih.herokuapp.com/patientSearch?name=${nameValue}&dob=${getDateString(
+                      dobValue
+                    )}`
+                  )
+                    .then((response) => response.json())
+                    .then((data) => {
+                      if ("error" in data) {
+                        setIsSearchSuccess(false);
+                        console.log(data.error);
+                        setSeverity("error");
+                        setMessage("Patient is not found in the database");
+                        setOpen(true);
+                        //then show a snackbar that about the error
+                      } else {
+                        setIsSearchSuccess(true);
+                        console.log(data.status);
+                        setSeverity("success");
+                        setMessage(
+                          "Patient is found in the database"
+                        );
+                        setOpen(true);
+                      }
+                    });
                   console.log(nameValue, getDateString(dobValue));
                 }}
               >
@@ -96,6 +130,15 @@ function ReceptionistScreen() {
                 </Button>
               </>
             )}
+            <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+              <Alert
+                onClose={handleClose}
+                severity={severity}
+                sx={{ width: "100%" }}
+              >
+                {message}
+              </Alert>
+            </Snackbar>
           </Stack>
         </ButtonGroup>
       </div>
