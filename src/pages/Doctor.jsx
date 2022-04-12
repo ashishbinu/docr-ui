@@ -61,7 +61,7 @@ function Doctor() {
         body: formData,
       };
       const response = await fetch(
-        "http://docr-sih.herokuapp.com/getOCR",
+        "https://docr-sih.herokuapp.com/getOCR",
         //TODO: change url to latest
         options
       );
