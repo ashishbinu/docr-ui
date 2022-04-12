@@ -10,9 +10,9 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 
 const getDateString = (dateObj) => {
-  const month = dateObj.getUTCMonth() + 1; //months from 1-12
-  const day = dateObj.getUTCDate() + 1;
-  const year = dateObj.getUTCFullYear();
+  const month = dateObj.getMonth() + 1; //months from 1-12
+  const day = dateObj.getDate().toString().padStart(2,'0');
+  const year = dateObj.getFullYear();
   return year + "-" + month + "-" + day;
 };
 function ReceptionistScreen() {
