@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
   Accordion,
   AccordionSummary,
@@ -11,6 +11,8 @@ import "./styles/Doctor.css";
 
 function Doctor() {
   const [patientDetails, setPatientDetails] = useState({});
+  const imageInput = useRef(null);
+  const [presImg, setPresImg] = useState(null);
 
   const pricolor = "#eeeeee";
   const secolor = "#dddddd";
@@ -20,7 +22,38 @@ function Doctor() {
     const details = await response.json();
     console.log(details);
     setPatientDetails(details);
-  }, []);
+
+    console.log("image input", imageInput);
+    console.log("prescription imgage", presImg);
+  }, [presImg]);
+
+  const onImageChange = async (event) => {
+    if (event.target.files && event.target.files[0]) {
+      const img = event.target.files[0];
+      const url = URL.createObjectURL(img);
+
+      const formData = new FormData();
+      formData.append("image", img);
+      formData.append("id", 300);
+      formData.append("source", "doctor");
+      const options = {
+        method: "POST",
+        body: formData,
+      };
+      const response = await fetch(
+        "http://192.168.41.82:8080/getOCR",
+        //TODO: change url to latest
+        options
+      );
+      const data = await response.json();
+      console.log("===================================");
+      console.log("GET POST DATA,", data);
+      console.log("===================================");
+
+      // console.log("image url ",url)
+      setPresImg(url);
+    }
+  };
 
   const history = patientDetails.history;
   console.log(history);
@@ -52,10 +85,12 @@ function Doctor() {
           >
             {" "}
             <input
+              ref={imageInput}
               type="file"
               name="presc-box"
               id="presc"
               accept="image/jpeg, image/png"
+              onChange={onImageChange}
               hidden
             />{" "}
             Upload Prescription
