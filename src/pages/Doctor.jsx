@@ -7,7 +7,7 @@ import {
   Button,
   Modal,
   Typography,
-  Box
+  Box,
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import "./styles/Doctor.css";
@@ -21,15 +21,15 @@ function Doctor() {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  const [modalres, setModalres] = useState([])
+  const [modalres, setModalres] = useState([]);
   const modalstyle = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
     width: 400,
-    bgcolor: 'background.paper',
-    border: '2px solid #000',
+    bgcolor: "background.paper",
+    border: "2px solid #000",
     boxShadow: 24,
     p: 4,
   };
@@ -73,10 +73,8 @@ function Doctor() {
       // const data = ["Paracetamol", "100mg", "1-0-1", "1 week"]
 
       // console.log("image url ",url)
-      if (data){
-        setOpen(true)
-        setModalres(data)
-      }
+      setOpen(true);
+      setModalres(data.ocr);
       setPresImg(url);
     }
   };
@@ -129,13 +127,16 @@ function Doctor() {
           >
             <Box sx={modalstyle}>
               <Typography id="modal-modal-title" variant="h6" component="h2">
-               Prescription Uploaded
+                Prescription Uploaded
               </Typography>
               <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                <p>Name: {modalres[0]}</p>
-                <p>Dosage: {modalres[1]}</p>
-                <p>Routine: {modalres[2]}</p>
-                <p>Duration: {modalres[3]}</p>
+                Name: {modalres[0]}
+                <br />
+                Dosage: {modalres[1]}
+                <br />
+                Routine: {modalres[2]}
+                <br />
+                Duration: {modalres[3]}
               </Typography>
             </Box>
           </Modal>
