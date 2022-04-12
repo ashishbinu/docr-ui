@@ -39,6 +39,13 @@ function ReceptionistScreen() {
 
   let navigate = useNavigate();
 
+  const onImageChange = async (event) => {
+    if (event.target.files && event.target.files[0]) {
+      const img = event.target.files[0];
+      const url = URL.createObjectURL(img);
+    }
+  };
+
   return (
     <Box
       component="form"
@@ -99,9 +106,7 @@ function ReceptionistScreen() {
                         setIsSearchSuccess(true);
                         console.log(data.status);
                         setSeverity("success");
-                        setMessage(
-                          "Patient is found in the database"
-                        );
+                        setMessage("Patient is found in the database");
                         setOpen(true);
                       }
                     });
@@ -120,12 +125,24 @@ function ReceptionistScreen() {
                 >
                   Print Enrollment Form
                 </Button>
+
                 <Button
-                  key="u_form"
-                  onClick={() => {
-                    navigate("/receptionist/scanEnrollmentForm");
+                  variant="outlined"
+                  color="primary"
+                  sx={{
+                    margin: "1rem",
                   }}
+                  component="label"
                 >
+                  {" "}
+                  <input
+                    type="file"
+                    name="presc-box"
+                    id="presc"
+                    accept="image/jpeg, image/png"
+                    onChange={onImageChange}
+                    hidden
+                  />{" "}
                   Upload Enrollment Form
                 </Button>
               </>
