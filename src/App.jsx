@@ -15,6 +15,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<UserSelectionScreen />} />
+          <Route path="/camera" element={<CameraScreen />} />
           <Route path="/doctor" element={<Doctor />} />
           <Route path="/doctor/uploadPrescription" element={<CameraScreen />} />
           <Route path="/receptionist" element={<ReceptionistScreen />} />
