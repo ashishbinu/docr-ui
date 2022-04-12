@@ -1,6 +1,7 @@
 import * as React from "react";
 import Button from "@mui/material/Button";
 import ButtonGroup from "@mui/material/ButtonGroup";
+import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 
@@ -37,38 +38,40 @@ function UserSelectionScreen(props) {
               flexDirection: { xs: "column", md: "row" },
             }}
           >
-            <h1>Select a User</h1>
+            <Stack spacing={2}>
+              <h1>Select a User</h1>
 
-            <ButtonGroup
-              orientation="vertical"
-              size="large"
-              aria-label="vertical outlined button group large"
-            >
-              <Button
-                key="Doctor"
-                onClick={() => {
-                  navigate("/doctor")
-                }}
+              <ButtonGroup
+                orientation="vertical"
+                size="large"
+                aria-label="vertical outlined button group large"
               >
-                Doctor
-              </Button>
-              <Button
-                key="Receptionist"
-                onClick={() => {
-                  navigate("/receptionist");
-                }}
-              >
-                Receptionist
-              </Button>
-              <Button
-                key="Pharmacy"
-                onClick={() => {
-                  navigate("/pharmacy");
-                }}
-              >
-                Pharmacy
-              </Button>
-            </ButtonGroup>
+                <Button
+                  key="Doctor"
+                  onClick={() => {
+                    navigate("/doctor");
+                  }}
+                >
+                  Doctor
+                </Button>
+                <Button
+                  key="Receptionist"
+                  onClick={() => {
+                    navigate("/receptionist");
+                  }}
+                >
+                  Receptionist
+                </Button>
+                <Button
+                  key="Pharmacy"
+                  onClick={() => {
+                    navigate("/pharmacy");
+                  }}
+                >
+                  Pharmacy
+                </Button>
+              </ButtonGroup>
+            </Stack>
           </Box>
         </Grid>
       </Grid>
