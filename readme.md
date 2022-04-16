@@ -1,4 +1,3 @@
-# UI
-## Working currently
-* /camera route.
-* / route. ( Has issue with heading on big screen - can be dealt later.)
+# dOCR UI - Smart India Internal Hackthon Submission
+
+It is frontend for dOCR app in react.
